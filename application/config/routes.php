@@ -56,7 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 */
 
 //custom routes
-$route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news';
+//$route['(:any)'] = 'pages/view/$1';
+$route['news/(:any)'] = 'News/view/$1';
+$route['news'] = 'News/index';
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
