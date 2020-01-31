@@ -70,15 +70,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+//to hide credentials grabbing in file outside the root
+$config = parse_ini_file('/var/www/config.ini');
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '35.196.28.120',
-	'username' => 'dylan326',
-	'password' => 'Ut87Ut87',
-	'database' => 'codeigniter',
+	'hostname' => $config['hostname'],
+	'username' => $config['username'],
+	'password' => $config['password'],
+	'database' => $config['database'],
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
