@@ -32,5 +32,18 @@ class News_model extends CI_Model {
 
                 return $this->db->insert('news', $data);
         }
+      public function update_news($slug)
+      {
+
+        $data = array(
+                'title' => $title,
+                'slug' => $slug,
+                'text' => $text
+        );
+         
+        $this->db->where('slug', $slug);
+        
+        return $this->db->update('news', $data);
+      }
 
 }
