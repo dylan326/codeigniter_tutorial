@@ -99,6 +99,12 @@ class News extends CI_Controller {
                                 show_404();
                         }
                 }
+        public function delete()
+        {
+                $slug = $this->uri->segment(2);
+
+                $this->news_model->delete($slug);
+        }
                         
         
 }
