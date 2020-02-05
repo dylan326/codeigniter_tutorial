@@ -50,12 +50,8 @@ class News_model extends CI_Model {
       public function delete($slug)
       {
 
-        //return $this->db->delete('news', array('' => $id));
-
         $this->db->where('slug', $slug);
-
-        
-      // return $this->db->delete('news');
+        return $this->db->delete('news');
 
       }
 
