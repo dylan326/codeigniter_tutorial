@@ -38,19 +38,18 @@ class News_model extends CI_Model {
                 $query = $this->db->get_where('news', array('id' => $id));
                 return $query->row_array();
         }
-      public function update_news()
+      public function update($id,$data)
       {
         $this->load->helper('url');
 
-        $data = array(
-                'title' => $title,
-                'slug' => $slug,
-                'text' => $text
-        );
+        //$this->db->where('id', $id);
+       // $this->db->update('news', $data);
          
-        
-        
         return $this->db->update('news', $data, array('id' => $id));
+
+        //print_r($data);
+
+        
       }
 
 }

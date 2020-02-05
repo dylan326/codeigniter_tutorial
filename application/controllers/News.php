@@ -78,29 +78,27 @@ class News extends CI_Controller {
 
         public function update()
         {
-                /*$this->load->helper('form');
-                $this->load->library('form_validation');
+             
 
-                $data['title'] = 'Update a news item';
+                        $id= $this->input->post('theId');
+                        $data = array(
+                        'title' => $this->input->post('title'),
+                        'text' => $this->input->post('text'),
+                        'slug' => $this->input->post('slug')
+                        );
 
-                $this->form_validation->set_rules('title', 'Title', 'required');
-                $this->form_validation->set_rules('text', 'Text', 'required');
-
-                if ($this->form_validation->run() === FALSE)
-                {
-                        $this->load->view('templates/header', $data);
-                        $this->load->view('news/update');
-                        $this->load->view('templates/footer');
-
-                }
-                else
-                {
-                        $this->news_model->update_news();
-                        $this->load->view('news/success');
-                }*/
-              
-                        $this->news_model->update_news();
-                        $this->load->view('news/success');
                 
-        }
+                        $isInserted = $this->news_model->update($id,$data);
+
+                        if($isInserted == TRUE)
+                        {
+                                $this->load->view('news/success');
+                        }
+                        else
+                        {
+                                show_404();
+                        }
+                }
+                        
+        
 }
