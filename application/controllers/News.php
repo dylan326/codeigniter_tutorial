@@ -57,10 +57,28 @@ class News extends CI_Controller {
                         $this->load->view('news/success');
                 }
         }
-
-        public function update($slug)
+        public function edit($id)
         {
                 $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                if($id == NULL)
+                {
+                        show_404();   
+                }
+
+                $data['edit_item'] = $this->news_model->get_edit_row($id);
+                $data['title'] = 'Update this news record';
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('news/update', $data);
+                $this->load->view('templates/footer');
+                
+        }
+
+        public function update()
+        {
+                /*$this->load->helper('form');
                 $this->load->library('form_validation');
 
                 $data['title'] = 'Update a news item';
@@ -79,6 +97,10 @@ class News extends CI_Controller {
                 {
                         $this->news_model->update_news();
                         $this->load->view('news/success');
-                }
+                }*/
+              
+                        $this->news_model->update_news();
+                        $this->load->view('news/success');
+                
         }
 }

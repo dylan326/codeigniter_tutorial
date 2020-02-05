@@ -32,8 +32,15 @@ class News_model extends CI_Model {
 
                 return $this->db->insert('news', $data);
         }
-      public function update_news($slug)
+        public function get_edit_row($id)
+        {
+               
+                $query = $this->db->get_where('news', array('id' => $id));
+                return $query->row_array();
+        }
+      public function update_news()
       {
+        $this->load->helper('url');
 
         $data = array(
                 'title' => $title,
@@ -41,9 +48,9 @@ class News_model extends CI_Model {
                 'text' => $text
         );
          
-        $this->db->where('slug', $slug);
         
-        return $this->db->update('news', $data);
+        
+        return $this->db->update('news', $data, array('id' => $id));
       }
 
 }
